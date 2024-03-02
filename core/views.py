@@ -11,8 +11,10 @@ from django.contrib.auth.decorators import login_required
 @login_required
 @api_view(['GET'])
 def home_view(request):
+    
     items = NewsAndEvents.objects.all().order_by("-updated_date")
-    return Response({"EventsAndNews": items})
+    serializer = NewsAndSerializer(items, many= True)
+    return Response({"EventsAndNews": serializer.data})
 
 
 @api_view(["POST"])
@@ -23,4 +25,12 @@ def post_add(request):
         serializer.save()
 
         return Response("created successfulyy")
-    return Response("Error occured")
+    return Response(serializer.errors)
+
+
+@api_view(['POST'])
+def edit_post(request):
+    pass
+
+
+
