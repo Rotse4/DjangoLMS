@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.conf import settings
 
 # Create your models here.
 
@@ -71,4 +72,17 @@ class Upload(models.Model):
     updated_date = models.DateTimeField(auto_now=True, auto_now_add=False, null=True)
     upload_time = models.DateTimeField(auto_now=False, auto_now_add=True, null=True)
 
+
+
+class CourseAllocation(models.Model):
+    lecturer = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="allocated_lecturer",
+    )
+    courses = models.ManyToManyField(Course, related_name="allocated_course")
+
+
+    def __str__(self):
+        return self.lecturer.get_full_name
 

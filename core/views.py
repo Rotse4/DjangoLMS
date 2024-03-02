@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-@login_required
+# @login_required
 @api_view(['GET'])
 def home_view(request):
     
@@ -25,7 +25,7 @@ def post_add(request):
         serializer.save()
 
         return Response("created successfulyy")
-    return Response(serializer.errors)
+    return Response({"data":serializer.errors})
 
 
 @api_view(['POST'])
