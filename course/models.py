@@ -36,7 +36,6 @@ class Course(models.Model):
     def __str__(self):
         return "{0} ({1})".format(self.title, self.code)
 
-
 # class Student(models.Model):
 #     name = models.CharField(max_length=200)
 #     book = models.FileField()
