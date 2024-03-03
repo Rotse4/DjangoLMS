@@ -25,10 +25,13 @@ class Course(models.Model):
     title = models.CharField(max_length=200, null=True)
     # book = models.FileField()
     # lessons = models.IntegerField()
+    picture = models.ImageField(
+        upload_to="course_pic/%y/%m/%d/", default="default.png", null=True
+    )
     code = models.CharField(unique=True, max_length=200, null=True)
     credit=models.IntegerField(null=True, default=0)
     summary = models.TextField(max_length=200, blank=True, null=True)
-    level = models.CharField(max_length=25)
+    level = models.CharField(max_length=25) 
     year = models.IntegerField(choices=YEARS, default=0)
     semester = models.CharField(choices=SEMESTER, max_length=200)
     is_elective = models.BooleanField(default=False, blank=True, null=True)
