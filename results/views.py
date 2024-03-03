@@ -16,6 +16,7 @@ def check_answer(request):
             return Response({"error": "Answer not found"}, status=status.HTTP_404_NOT_FOUND)
 
         if answer.is_correct:
+            marks_awarded = 10 
             return Response({"message": "Correct answer!"}, status=status.HTTP_200_OK)
         else:
             return Response({"message": "Incorrect answer!"}, status=status.HTTP_200_OK)
@@ -26,4 +27,7 @@ def get_all_questions(request):
     if request.method == 'GET':
         questions = Quiz.objects.all()
         serializer = QuizSerializer(questions, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response({"data":serializer.data})
+    
+
+
