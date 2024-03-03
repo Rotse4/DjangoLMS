@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'account',
     'course',
     'lms',
-    'core'
+    'core',
+    'results'
 ]
 
 MIDDLEWARE = [
