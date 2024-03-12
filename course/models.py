@@ -37,7 +37,7 @@ class Course(models.Model):
     is_elective = models.BooleanField(default=False, blank=True, null=True)
 
     def __str__(self):
-        return "{0} ({1})".format(self.title, self.code)
+        return "{0} ({1})".format(self.title, self.code, self.id)
 
 # class Student(models.Model):
 #     name = models.CharField(max_length=200)
