@@ -16,7 +16,7 @@ def get_courses(request):
 
 
 @api_view(['Get'])
-def get_content(request, pk=1):
+def get_content(request, pk):
     course=Course.objects.filter(id=pk).first()
     upload=Upload.objects.filter(course=course)
 
