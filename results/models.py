@@ -23,7 +23,7 @@ class Quiz(models.Model):
         help_text=_("A detailed description of the quiz"),
     )
     category = models.TextField(choices=CATEGORY_OPTIONS, blank=True)
-    pass_mark=models.SmallIntegerField(validators=[MaxValueValidator(100)])
+    # pass_mark=models.SmallIntegerField(validators=[MaxValueValidator(100)])
     # correct_answer = models.
 
 

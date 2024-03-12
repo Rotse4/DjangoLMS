@@ -26,7 +26,7 @@ class Course(models.Model):
     # book = models.FileField()
     # lessons = models.IntegerField()
     picture = models.ImageField(
-        upload_to="course_pic/%y/%m/%d/", default="default.png", null=True
+        upload_to="course_pic/%y/%m/%d/", null=False
     )
     code = models.CharField(unique=True, max_length=200, null=True)
     credit=models.IntegerField(null=True, default=0)
