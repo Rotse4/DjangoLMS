@@ -47,9 +47,25 @@ def calc_marks(request):
         serializer.save()
     return Response(serializer.errors)
 
-
 @api_view(['POST'])
 def submit_answer(request):
+    received_data = request.data
+    marks = 0
+    print(received_data)
+    for key in received_data:
+        answer_id = int(key)
+        # print(answer_id)
+        find = Answer.objects.get(id=answer_id)
+
+        if find.is_correct:
+            marks+=1
+            print("Awarded 1 mark for Answer ID:", answer_id)
+
+    return Response({"You scored":marks})
+
+
+@api_view(['POST'])
+def answerss(request):
     if request.method == 'POST':
         # dict={}
         question_id_start = 1 
