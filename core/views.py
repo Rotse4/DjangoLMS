@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 @api_view(['GET'])
 def home_view(request):
     
+    
     items = NewsAndEvents.objects.all().order_by("-updated_date")
     serializer = NewsAndSerializer(items, many= True)
     return Response({"EventsAndNews": serializer.data})
